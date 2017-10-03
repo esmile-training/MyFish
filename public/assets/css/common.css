@@ -1,0 +1,20 @@
+body {
+    color:#FFF;
+}
+#container {
+	position: relative;
+    margin: 30px auto;
+    background-color: #FFF;
+    width : 960px;
+    height: 580px;
+    color: #111;
+    padding:10px;
+}
+
+#container a {
+    text-decoration: none;
+    color: aqua;
+}
+.footer_developer th{
+    text-align: right;
+}
