@@ -2,13 +2,13 @@
 <?= Form::open(array('action' => 'login/login', 'method' => 'post')); ?>
 	<table>
 		<tr>
-			<td>名前</td>
+			<td>ユーザーID</td>
 			<td>
 				<?= Form::input('name',  '', array(	'style' => 'padding:3px;' )); ?>
 			</td>
 		</tr>
 		<tr>
-			<td>合言葉</td>
+			<td>パスワード</td>
 			<td>
 				<?= Form::input('password', '', array( 'type'=>'password', 'style' => 'padding:3px;')); ?>
 			</td>
