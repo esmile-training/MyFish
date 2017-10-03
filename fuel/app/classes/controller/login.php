@@ -1,13 +1,13 @@
 <?php
 
-class Controller_Top extends Controller_Base_Game
+class Controller_Login extends Controller_Base_Game
 {
 	public function action_index($error_code = null)
 	{
 		\config::load('error');
 		$this->view_data['error_msg'] = ($error_code)? config::get('msg.'.$error_code) : false;
 
-		View_Wrap::contents('top', $this->view_data);
+		View_Wrap::contents('login', $this->view_data);
 	}
 	
 	public function action_login()
