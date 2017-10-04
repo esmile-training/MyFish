@@ -19,6 +19,8 @@
 </div>
 <?= Form::close(); ?>
 
+<a href="play">プレイ画面へ</a>
+
 <?php if ($error_msg): ?>
 	<div>
 		<?= $error_msg ?>
