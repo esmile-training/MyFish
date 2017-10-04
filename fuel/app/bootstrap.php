@@ -37,6 +37,7 @@ define('DOMAIN_URL', 'http://'.$_SERVER['SERVER_NAME'].'/');
 define('CONTENTS_URL', 'http://'.$_SERVER['SERVER_NAME'].'/'.ENVIRONMENT.'/'.INDIVIDUALL.'/');	//URL
 define('ADMIN_URL', CONTENTS_URL.'admin/');
 define('IMG_URL', CONTENTS_URL.'public/assets/img/');
+define('APP_URL','http://esmile-sys.sakura.ne.jp/MyFish/matsui/');
 
 //その他定数
 define('DATE_FORMAT', 'Y-m-d H:i:s');

@@ -1,8 +1,10 @@
 <?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*
+ * ゲームのプレイ画面(View)
  */
+?>
 
+<?php // 背景画像の表示　?>
+<div>
+	<?= Asset::img('bg/battle_bg.png', array('alt' => 'background')) ?>
+</div>
