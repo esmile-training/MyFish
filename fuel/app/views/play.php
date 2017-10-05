@@ -8,3 +8,5 @@
 <div>
 	<?= Asset::img('bg/battle_bg.png', array('alt' => 'background')) ?>
 </div>
+
+<?= var_dump($test) ?>
