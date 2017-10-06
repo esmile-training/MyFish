@@ -9,4 +9,8 @@
 	<?= Asset::img('bg/battle_bg.png', array('alt' => 'background')) ?>
 </div>
 
-<?= var_dump($test) ?>
+<?php foreach ($tile_position as $tile): ?>
+	<div>
+		<?= Asset::img('object/tile.png', array('alt' => 'tile')) ?>
+	</div>
+<?php endforeach; ?>

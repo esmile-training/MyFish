@@ -10,11 +10,18 @@ class Controller_play extends Controller_Base_Game
 	// index関数
 	public function action_index()
 	{
-		// 試しにbordのデータをviewへ受け渡した
-		$this->view_data['bord'] = Config::load('bord');
+		// DBからゲームデータを取得する
+		$this->view_data['game_data'] = Model_GameData::find('first', array(
+					'where' => array(
+						'user_id' => $this->view_data['user']['id']
+					)
+		));
 
-		// ターンプレイヤーの取得、本来はDBから受け取る
-		$this->view_data['turn_player'] = 1;
+		// タイルの位置情報を取得(配列に変換します)
+		$this->view_data['tile_position'] = explode(",", $this->view_data['game_data']['tile_position']);
+
+		// ターンプレイヤーの取得
+		$this->view_data['turn_player'] = $this->view_data['game_data']['turn_player'];
 
 		// ターン切り替えのテスト
 		$this->view_data['test'] = $this->change_turn_player();
@@ -26,9 +33,9 @@ class Controller_play extends Controller_Base_Game
 	// ターンを回す関数
 	public function change_turn_player()
 	{
-		$next_turn_player = 0; //次のターンプレイヤー
+		$next_turn_player	 = 0; //次のターンプレイヤー
 		// 現在のターンプレイヤーを取得
-		$turn_player = $this->view_data['turn_player'];
+		$turn_player		 = $this->view_data['turn_player'];
 
 		// ターンが終端に達しているかを確認する
 		if ($turn_player == 4)
@@ -39,11 +46,10 @@ class Controller_play extends Controller_Base_Game
 		else
 		{
 			// そうでなければ番号を加算して進める
-			$next_turn_player = $turn_player += 1;
+			$next_turn_player	 = $turn_player		 += 1;
 		}
 
 		return $next_turn_player;
 	}
 
-	
 }
