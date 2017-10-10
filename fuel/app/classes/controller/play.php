@@ -18,7 +18,7 @@ class Controller_play extends Controller_Base_Game
 		));
 
 		// タイルの位置情報を取得(配列に変換します)
-		$this->view_data['tile_position'] = explode(",", $this->view_data['game_data']['tile_position']);
+		$this->view_data['tile'] = explode(",", $this->view_data['game_data']['tile']);
 
 		// ターンプレイヤーの取得
 		$this->view_data['turn_player'] = $this->view_data['game_data']['turn_player'];

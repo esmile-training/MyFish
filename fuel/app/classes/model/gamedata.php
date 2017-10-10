@@ -13,7 +13,7 @@ class Model_GameData extends Model_Base_Db
 		'id',
 		'turn_player',
 		'player_position',
-		'tile_position',
+		'tile',
 	);
 	protected static $_observers	 = array(
 		'Orm\Observer_UpdatedAt' => array(
