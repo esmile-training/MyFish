@@ -1,34 +1,86 @@
 /*
 盤面のレイアウト用css
 */
+
+
+#bord{
+	position: absolute;
+	margin-top: 43px;
+    margin-left: 55px;
+}
+
+/*背景の設定*/
+.background{
+	position: absolute;
+}
+
+/*タイルそのものの設定*/
+.tile{
+	position: absolute;
+	width: 120px;
+    height: 80px;
+}
+
+/*タイルの列の設定*/
+.column1{
+	margin-left: 0px;
+}
+.column2{
+	margin-left: 120px;
+}
+.column3{
+	margin-left: 240px;
+}
+.column4{
+	margin-left: 360px;
+}
+.column5{
+	margin-left: 480px;
+}
+.column6{
+	margin-left: 600px;
+}
+.column7{
+	margin-left: 720px;
+}
+.column8{
+	margin-left: 840px;
+}
+
+/*タイルの行の設定*/
 .line1{
-	
+	width: 980px;
+    height: 80px;
 }
-
 .line2{
-	
+	width: 980px;
+    height: 80px;
+	margin-left: 60px;
 }
-
 .line3{
-	
+	width: 980px;
+    height: 80px;
 }
-
 .line4{
-	
+	width: 980px;
+    height: 80px;
+	margin-left: 60px;
 }
-
 .line5{
-	
+	width: 980px;
+    height: 80px;
 }
-
 .line6{
-	
+	width: 980px;
+    height: 80px;
+	margin-left: 60px;
 }
-
 .line7{
-	
+	width: 980px;
+    height: 80px;
 }
-
 .line8{
-	
+	width: 980px;
+    height: 80px;
+	margin-left: 60px;
 }
