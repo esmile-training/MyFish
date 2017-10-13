@@ -5,15 +5,15 @@
 ?>
 
 <?php // cssの読み込み ?>
-<?= Asset::css('bord_layout.css') ?>
+<?= Asset::css('square_layout.css') ?>
 
 <?php // 背景画像の表示　?>
 <div class="background">
 	<?= Asset::img('bg/battle_bg.png', array('alt' => 'background')) ?>
 </div>
 
-<?php // 盤面を表示する領域 ?>
-<div id="bord">
+<?php // マスを表示する ?>
+<div id="square">
 	<?php // 縦列のループ ?>
 	<?php for ($i = 0; $i < 8; $i++): ?>
 		<div class="line<?= $i + 1 ?>">
@@ -30,3 +30,7 @@
 
 </div>
 
+<?php // プレイヤーの駒を表示する ?>
+<div id="piece">
+	
+</div>
