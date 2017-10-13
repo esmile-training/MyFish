@@ -14,54 +14,19 @@
 
 <?php // 盤面を表示する領域 ?>
 <div id="bord">
-	<?php // タイルを敷き詰める処理 ?>
-	<div class="line1">
-		<?php for($i = 1;$i <= 8;$i++): ?>
-			<div class="tile column<?= $i ?>"><?= Asset::img('object/tile' . $tile[$i - 1] . '.png', array('alt' => 'tile', 'width' => '120px', 'height' => '80px')) ?></div>
-		<?php endfor; ?>
-	</div>
+	<?php // 縦列のループ ?>
+	<?php for ($i = 0; $i < 8; $i++): ?>
+		<div class="line<?= $i + 1 ?>">
 
-	<div class="line2">
-		<?php for($i = 1;$i <= 8;$i++): ?>
-			<div class="tile column<?= $i ?>"><?= Asset::img('object/tile' . $tile[($i - 1) + 8] . '.png', array('alt' => 'tile', 'width' => '120px', 'height' => '80px')) ?></div>
-		<?php endfor; ?>
-	</div>
+			<?php // 横列のループ ?>
+			<?php for ($j = 1; $j <= 8; $j++): ?>
 
-	<div class="line3">
-		<?php for($i = 1;$i <= 8;$i++): ?>
-			<div class="tile column<?= $i ?>"><?= Asset::img('object/tile' . $tile[($i - 1) + 16] . '.png', array('alt' => 'tile', 'width' => '120px', 'height' => '80px')) ?></div>
-		<?php endfor; ?>
-	</div>
+				<?php // イメージの描画処理を行う ?>
+				<div class="tile column<?= $j ?>"><?= Asset::img('object/tile' . $tile[($j - 1 ) +(8 * $i)] . '.png', array('alt' => 'tile', 'width' => '120px', 'height' => '80px')) ?></div>
 
-	<div class="line4">
-		<?php for($i = 1;$i <= 8;$i++): ?>
-			<div class="tile column<?= $i ?>"><?= Asset::img('object/tile' . $tile[($i - 1) + 24] . '.png', array('alt' => 'tile', 'width' => '120px', 'height' => '80px')) ?></div>
-		<?php endfor; ?>
-	</div>
-
-	<div class="line5">
-		<?php for($i = 1;$i <= 8;$i++): ?>
-			<div class="tile column<?= $i ?>"><?= Asset::img('object/tile' . $tile[($i - 1) + 32] . '.png', array('alt' => 'tile', 'width' => '120px', 'height' => '80px')) ?></div>
-		<?php endfor; ?>
-	</div>
-
-	<div class="line6">
-		<?php for($i = 1;$i <= 8;$i++): ?>
-			<div class="tile column<?= $i ?>"><?= Asset::img('object/tile' . $tile[($i - 1) + 40] . '.png', array('alt' => 'tile', 'width' => '120px', 'height' => '80px')) ?></div>
-		<?php endfor; ?>
-	</div>
-
-	<div class="line7">
-		<?php for($i = 1;$i <= 8;$i++): ?>
-			<div class="tile column<?= $i ?>"><?= Asset::img('object/tile' . $tile[($i - 1) + 48] . '.png', array('alt' => 'tile', 'width' => '120px', 'height' => '80px')) ?></div>
-		<?php endfor; ?>
-	</div>
-
-	<div class="line8">
-		<?php for($i = 1;$i <= 8;$i++): ?>
-			<div class="tile column<?= $i ?>"><?= Asset::img('object/tile' . $tile[($i - 1) + 56] . '.png', array('alt' => 'tile', 'width' => '120px', 'height' => '80px')) ?></div>
-		<?php endfor; ?>
-	</div>
+			<?php endfor; ?>
+		</div>
+	<?php endfor; ?>
 
 </div>
 
