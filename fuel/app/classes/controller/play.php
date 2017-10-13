@@ -17,14 +17,17 @@ class Controller_play extends Controller_Base_Game
 					)
 		));
 
-		// タイルの位置情報を取得(配列に変換します)
+		// タイルの位置情報を配列に変換する
 		$this->view_data['tile'] = explode(",", $this->view_data['game_data']['tile']);
+
+		// プレイヤーの位置情報を配列に変換する
+		$this->view_data['player_position'] = explode(",", $this->view_data['game_data']['player_position']);
 
 		// ターンプレイヤーの取得
 		$this->view_data['turn_player'] = $this->view_data['game_data']['turn_player'];
 
 		// ターン切り替えのテスト
-		$this->view_data['test'] = $this->change_turn_player();
+		$this->view_data['test'] = "1";
 
 		// viewへ移動する
 		View_Wrap::contents('play', $this->view_data);
