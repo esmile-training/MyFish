@@ -22,7 +22,7 @@
 			<?php for ($j = 1; $j <= 8; $j++): ?>
 
 				<?php // イメージの描画処理を行う ?>
-				<div class="tile column<?= $j ?>"><?= Asset::img('object/tile' . $tile[($j - 1 ) +(8 * $i)] . '.png', array('alt' => 'tile', 'width' => '120px', 'height' => '80px')) ?></div>
+				<div class="tile column<?= $j ?>"><?= Asset::img('object/tile' . $tile[($j - 1 ) +(8 * $i)] . '.png', array('alt' => 'tile')) ?></div>
 
 			<?php endfor; ?>
 		</div>

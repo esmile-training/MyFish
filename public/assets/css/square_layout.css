@@ -17,7 +17,7 @@
 /*タイルそのものの設定*/
 .tile{
 	position: absolute;
-	width: 120px;
+	width: 80px;
     height: 80px;
 }
 
@@ -26,25 +26,25 @@
 	margin-left: 0px;
 }
 .column2{
-	margin-left: 120px;
+	margin-left: 70px;
 }
 .column3{
-	margin-left: 240px;
+	margin-left: 140px;
 }
 .column4{
-	margin-left: 360px;
+	margin-left: 210px;
 }
 .column5{
-	margin-left: 480px;
+	margin-left: 280px;
 }
 .column6{
-	margin-left: 600px;
+	margin-left: 350px;
 }
 .column7{
-	margin-left: 720px;
+	margin-left: 420px;
 }
 .column8{
-	margin-left: 840px;
+	margin-left: 490px;
 }
 
 /*タイルの行の設定*/
@@ -55,32 +55,39 @@
 .line2{
 	width: 980px;
     height: 80px;
-	margin-left: 60px;
+	margin-left: 35px;
+	margin-top: -20px;
 }
 .line3{
 	width: 980px;
     height: 80px;
+	margin-top: -20px;
 }
 .line4{
 	width: 980px;
     height: 80px;
-	margin-left: 60px;
+	margin-left: 35px;
+	margin-top: -20px;
 }
 .line5{
 	width: 980px;
     height: 80px;
+	margin-top: -20px;
 }
 .line6{
 	width: 980px;
     height: 80px;
-	margin-left: 60px;
+	margin-left: 35px;
+	margin-top: -20px;
 }
 .line7{
 	width: 980px;
     height: 80px;
+	margin-top: -20px;
 }
 .line8{
 	width: 980px;
     height: 80px;
-	margin-left: 60px;
+	margin-left: 35px;
+	margin-top: -20px;
 }
