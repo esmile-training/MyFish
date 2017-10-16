@@ -22,72 +22,72 @@
 }
 
 /*タイルの列の設定*/
-.column1{
+.square_column1{
 	margin-left: 0px;
 }
-.column2{
-	margin-left: 70px;
+.square_column2{
+	margin-left: 80px;
 }
-.column3{
-	margin-left: 140px;
+.square_column3{
+	margin-left: 160px;
 }
-.column4{
-	margin-left: 210px;
+.square_column4{
+	margin-left: 240px;
 }
-.column5{
-	margin-left: 280px;
+.square_column5{
+	margin-left:320px;
 }
-.column6{
-	margin-left: 350px;
+.square_column6{
+	margin-left: 400px;
 }
-.column7{
-	margin-left: 420px;
+.square_column7{
+	margin-left: 480px;
 }
-.column8{
-	margin-left: 490px;
+.square_column8{
+	margin-left: 560px;
 }
 
 /*タイルの行の設定*/
-.line1{
+.square_line1{
 	width: 980px;
     height: 80px;
 }
-.line2{
+.square_line2{
 	width: 980px;
     height: 80px;
 	margin-left: 35px;
-	margin-top: -20px;
+	margin-top: -10px;
 }
-.line3{
+.square_line3{
 	width: 980px;
     height: 80px;
-	margin-top: -20px;
+	margin-top: -10px;
 }
-.line4{
-	width: 980px;
-    height: 80px;
-	margin-left: 35px;
-	margin-top: -20px;
-}
-.line5{
-	width: 980px;
-    height: 80px;
-	margin-top: -20px;
-}
-.line6{
+.square_line4{
 	width: 980px;
     height: 80px;
 	margin-left: 35px;
-	margin-top: -20px;
+	margin-top: -10px;
 }
-.line7{
+.square_line5{
 	width: 980px;
     height: 80px;
-	margin-top: -20px;
+	margin-top: -10px;
 }
-.line8{
+.square_line6{
 	width: 980px;
     height: 80px;
 	margin-left: 35px;
-	margin-top: -20px;
+	margin-top: -10px;
+}
+.square_line7{
+	width: 980px;
+    height: 80px;
+	margin-top: -10px;
+}
+.square_line8{
+	width: 980px;
+    height: 80px;
+	margin-left: 35px;
+	margin-top: -10px;
 }

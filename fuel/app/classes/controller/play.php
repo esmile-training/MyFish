@@ -55,4 +55,10 @@ class Controller_play extends Controller_Base_Game
 		return $next_turn_player;
 	}
 
+	// プレイヤーの位置確認をする
+	public function check_player_position()
+	{
+		
+	}
+	
 }

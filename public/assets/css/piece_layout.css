@@ -1,0 +1,48 @@
+/*
+プレイヤー(駒)のレイアウト用css
+*/
+
+#piece{
+	position: absolute;
+	margin-top: 43px;
+    margin-left: 55px;
+}
+
+#piece_1_1{
+	top:0px;
+	left: 0px
+}
+#piece_1_2{
+	top:0px;
+	left: 0px
+}
+#piece_2_1{
+	top:0px;
+	left: 0px
+}
+#piece_2_2{
+	top:0px;
+	left: 0px
+}
+#piece_3_1{
+	top:0px;
+	left: 0px
+}
+#piece_3_2{
+	top:0px;
+	left: 0px
+}
+#piece_4_1{
+	top:0px;
+	left: 0px
+}
+#piece_4_2{
+	top:0px;
+	left: 0px
+}
+
+.piece_size{
+	position:absolute;
+	width: 90px;
+	height: 90px;
+}

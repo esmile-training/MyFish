@@ -6,6 +6,7 @@
 
 <?php // cssの読み込み ?>
 <?= Asset::css('square_layout.css') ?>
+<?= Asset::css('piece_layout.css') ?>
 
 <?php // 背景画像の表示　?>
 <div class="background">
@@ -16,13 +17,13 @@
 <div id="square">
 	<?php // 縦列のループ ?>
 	<?php for ($i = 0; $i < 8; $i++): ?>
-		<div class="line<?= $i + 1 ?>">
+		<div class="square_line<?= $i + 1 ?>">
 
 			<?php // 横列のループ ?>
 			<?php for ($j = 1; $j <= 8; $j++): ?>
 
 				<?php // イメージの描画処理を行う ?>
-				<div class="tile column<?= $j ?>"><?= Asset::img('object/tile' . $tile[($j - 1 ) +(8 * $i)] . '.png', array('alt' => 'tile')) ?></div>
+				<div class="square_column<?= $j ?>"><?= Asset::img('object/tile' . $tile[($j - 1 ) +(8 * $i)] . '.png', array('class'=>'tile','alt' => 'tile')) ?></div>
 
 			<?php endfor; ?>
 		</div>
@@ -32,5 +33,20 @@
 
 <?php // プレイヤーの駒を表示する ?>
 <div id="piece">
-	
+		<?= Asset::img('chara/chara_p1.png', array('id'=>'piece_1_1','class' => 'piece_size','alt' => 'player')) ?>
+
+		<?= Asset::img('chara/chara_p1.png', array('id'=>'piece_1_2','class' => 'piece_size','alt' => 'player')) ?>
+
+		<?= Asset::img('chara/chara_p2.png', array('id'=>'piece_2_1','class' => 'piece_size','alt' => 'player')) ?>
+
+		<?= Asset::img('chara/chara_p2.png', array('id'=>'piece_2_2','class' => 'piece_size','alt' => 'player')) ?>
+
+		<?= Asset::img('chara/chara_p3.png', array('id'=>'piece_3_1','class' => 'piece_size','alt' => 'player')) ?>
+
+		<?= Asset::img('chara/chara_p3.png', array('id'=>'piece_3_2','class' => 'piece_size','alt' => 'player')) ?>
+
+		<?= Asset::img('chara/chara_p4.png', array('id'=>'piece_4_1','class' => 'piece_size','alt' => 'player')) ?>
+
+		<?= Asset::img('chara/chara_p4.png', array('id'=>'piece_4_2','class' => 'piece_size','alt' => 'player')) ?>
+
 </div>
