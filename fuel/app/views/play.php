@@ -7,6 +7,7 @@
 <?php // cssの読み込み ?>
 <?= Asset::css('square_layout.css') ?>
 <?= Asset::css('piece_layout.css') ?>
+<?= Asset::js('piece.js') ?>
 
 <?php // 背景画像の表示　?>
 <div class="background">
@@ -23,7 +24,7 @@
 			<?php for ($j = 1; $j <= 8; $j++): ?>
 
 				<?php // イメージの描画処理を行う ?>
-				<div class="square_column<?= $j ?>"><?= Asset::img('object/tile' . $tile[($j - 1 ) +(8 * $i)] . '.png', array('class'=>'tile','alt' => 'tile')) ?></div>
+				<div class="square_column<?= $j ?>"><?= Asset::img('object/tile' . $tile[($j - 1 ) + (8 * $i)] . '.png', array('class' => 'tile', 'alt' => 'tile')) ?></div>
 
 			<?php endfor; ?>
 		</div>
@@ -33,20 +34,40 @@
 
 <?php // プレイヤーの駒を表示する ?>
 <div id="piece">
-		<?= Asset::img('chara/chara_p1.png', array('id'=>'piece_1_1','class' => 'piece_size','alt' => 'player')) ?>
+	<div id="piece_1_1">
+		<?= Asset::img('chara/chara_p1.png', array('class' => 'piece_size', 'alt' => 'player')) ?>
+	</div>
 
-		<?= Asset::img('chara/chara_p1.png', array('id'=>'piece_1_2','class' => 'piece_size','alt' => 'player')) ?>
+	<div id="piece_1_2">
+		<?= Asset::img('chara/chara_p1.png', array('class' => 'piece_size', 'alt' => 'player')) ?>
+	</div>
 
-		<?= Asset::img('chara/chara_p2.png', array('id'=>'piece_2_1','class' => 'piece_size','alt' => 'player')) ?>
+	<div id="piece_2_1">
+		<?= Asset::img('chara/chara_p2.png', array('class' => 'piece_size', 'alt' => 'player')) ?>
+	</div>
 
-		<?= Asset::img('chara/chara_p2.png', array('id'=>'piece_2_2','class' => 'piece_size','alt' => 'player')) ?>
+	<div id="piece_2_2">
+		<?= Asset::img('chara/chara_p2.png', array('class' => 'piece_size', 'alt' => 'player')) ?>
+	</div>
 
-		<?= Asset::img('chara/chara_p3.png', array('id'=>'piece_3_1','class' => 'piece_size','alt' => 'player')) ?>
+	<div id="piece_3_1">
+		<?= Asset::img('chara/chara_p3.png', array('class' => 'piece_size', 'alt' => 'player')) ?>
+	</div>
 
-		<?= Asset::img('chara/chara_p3.png', array('id'=>'piece_3_2','class' => 'piece_size','alt' => 'player')) ?>
+	<div id="piece_3_2">
+		<?= Asset::img('chara/chara_p3.png', array('class' => 'piece_size', 'alt' => 'player')) ?>
+	</div>
 
-		<?= Asset::img('chara/chara_p4.png', array('id'=>'piece_4_1','class' => 'piece_size','alt' => 'player')) ?>
+	<div id="piece_4_1">
+		<?= Asset::img('chara/chara_p4.png', array('class' => 'piece_size', 'alt' => 'player')) ?>
+	</div>
 
-		<?= Asset::img('chara/chara_p4.png', array('id'=>'piece_4_2','class' => 'piece_size','alt' => 'player')) ?>
+	<div id="piece_4_2">	
+		<?= Asset::img('chara/chara_p4.png', array('class' => 'piece_size', 'alt' => 'player')) ?>
 
+	</div>
 </div>
+
+<script>
+	init_position();
+</script>

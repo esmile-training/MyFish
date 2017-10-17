@@ -16,6 +16,9 @@ class Controller_play extends Controller_Base_Game
 						'user_id' => $this->view_data['user']['id']
 					)
 		));
+		
+		// 駒の表示位置オフセットを読み込む
+		$this->view_data['piece_position_offset'] = Config::load('piece_position_offset');
 
 		// タイルの位置情報を配列に変換する
 		$this->view_data['tile'] = explode(",", $this->view_data['game_data']['tile']);
