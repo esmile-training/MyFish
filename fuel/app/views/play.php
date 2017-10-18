@@ -7,6 +7,8 @@
 <?php // cssの読み込み ?>
 <?= Asset::css('square_layout.css') ?>
 <?= Asset::css('piece_layout.css') ?>
+
+<?php // javascriptの読み込み ?>
 <?= Asset::js('piece.js') ?>
 
 <?php // 背景画像の表示　?>

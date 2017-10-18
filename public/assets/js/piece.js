@@ -8,7 +8,7 @@ function init_position()
 	// 駒の要素をIDを元に取得する
 	var test = document.getElementById("piece_1_1");
 
-	test.top = 220;
+	test.style.top = "50px";
 
 	console.log(test);
 }
