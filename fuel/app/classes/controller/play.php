@@ -21,7 +21,13 @@ class Controller_play extends Controller_Base_Game
 		$this->view_data['piece_position_offset'] = Config::load('piece_position_offset');
 
 		// タイルの位置情報を配列に変換する
-		$this->view_data['tile'] = explode(",", $this->view_data['game_data']['tile']);
+		$this->view_data['tile']['tile_type'] = explode(",", $this->view_data['game_data']['tile']);
+		
+		// 配列にタイルのインデックスを付ける
+		for($i = 0;$i <= 63;$i++)
+		{
+			$this->view_data['tile']['index'][$i] = $i;
+		}
 
 		// プレイヤーの位置情報を配列に変換する
 		$this->view_data['player_position'] = explode(",", $this->view_data['game_data']['player_position']);
@@ -56,12 +62,6 @@ class Controller_play extends Controller_Base_Game
 		}
 
 		return $next_turn_player;
-	}
-
-	// プレイヤーの位置確認をする
-	public function check_player_position()
-	{
-		
 	}
 	
 }
