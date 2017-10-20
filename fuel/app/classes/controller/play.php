@@ -23,10 +23,10 @@ class Controller_play extends Controller_Base_Game
 		// タイルの位置情報を配列に変換する
 		$this->view_data['tile']['tile_type'] = explode(",", $this->view_data['game_data']['tile']);
 		
-		// 配列にタイルのインデックスを付ける
+		// 配列にタイルのidを付ける
 		for($i = 0;$i <= 63;$i++)
 		{
-			$this->view_data['tile']['index'][$i] = $i;
+			$this->view_data['tile']['id'][$i] = $i;
 		}
 
 		// プレイヤーの位置情報を配列に変換する
@@ -34,9 +34,6 @@ class Controller_play extends Controller_Base_Game
 
 		// ターンプレイヤーの取得
 		$this->view_data['turn_player'] = $this->view_data['game_data']['turn_player'];
-
-		// ターン切り替えのテスト
-		$this->view_data['test'] = "1";
 
 		// viewへ移動する
 		View_Wrap::contents('play', $this->view_data);
@@ -63,5 +60,5 @@ class Controller_play extends Controller_Base_Game
 
 		return $next_turn_player;
 	}
-	
+
 }

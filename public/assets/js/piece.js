@@ -13,16 +13,16 @@ function init_position()
 	console.log(test);
 }
 
-// 駒をクリック時にその駒のキーを取得する
-function get_piece_key()
+// 駒をクリック時にその駒のデータを取得する
+function get_piece_data()
 {
-	console.log('get_piece_key()を実行');
+	console.log('get_piece_data()を実行');
 }
 
-// タイルをクリック時にその駒のキーを取得する
-function get_tile_key()
+// タイルをクリック時にその駒のデータを取得する
+function get_tile_data()
 {
-	console.log('get_tile_key()を実行');
+	console.log('get_tile_data()を実行');
 }
 
 function click_test()

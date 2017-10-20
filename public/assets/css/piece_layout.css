@@ -6,10 +6,10 @@
 	margin-top: 16px;
     margin-left: 45px;
     position: absolute;
-    width: 1020px;
-    height: 570px;
+
 }
 
+// 個別の駒の設定
 #piece_1_1{
 	top:0px;
 	left: 0px;
@@ -54,4 +54,5 @@
 .piece_size{
 	width: 90px;
 	height: 90px;
+	position: absolute;
 }
