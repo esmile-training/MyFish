@@ -24,8 +24,3 @@ function get_tile_data()
 {
 	console.log('get_tile_data()を実行');
 }
-
-function click_test()
-{
-	console.log('クリックされました');
-}

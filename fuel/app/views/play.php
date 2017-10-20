@@ -35,7 +35,7 @@
 				<div class="square_column<?= $j ?>">
 
 					<div id="tile<?= $counter ?>" class="tile" onclick="get_tile_data()">
-		<?= Asset::img('object/tile' . $tile['tile_type'][($j - 1 ) + (8 * $i)] . '.png', array('alt' => 'tile')) ?>
+						<?= Asset::img('object/tile' . $tile['tile_type'][($j - 1 ) + (8 * $i)] . '.png', array('alt' => 'tile')) ?>
 					</div>
 
 				</div>
@@ -50,7 +50,7 @@
 
 		<?php // プレイヤーの駒を表示する   ?>
 <div id="piece">
-	<div id="piece_1_1" onclick="get_piece_data()">
+	<div id="piece_1_1" class="piece_size" onclick="get_piece_data()">
 		<?= Asset::img('chara/chara_p1.png', array('class' => 'piece_size', 'alt' => 'player')) ?>
 	</div>
 
@@ -79,8 +79,7 @@
 	</div>
 
 	<div id="piece_4_2" onclick="get_piece_data()">	
-<?= Asset::img('chara/chara_p4.png', array('class' => 'piece_size', 'alt' => 'player')) ?>
-
+		<?= Asset::img('chara/chara_p4.png', array('class' => 'piece_size', 'alt' => 'player')) ?>
 	</div>
 </div>
 
