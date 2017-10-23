@@ -9,6 +9,7 @@
 <?= Asset::css('piece_layout.css') ?>
 
 <?php // javascriptの読み込み ?>
+<?= Asset::js('jquery-3.2.1.min.js') ?>
 <?= Asset::js('piece.js') ?>
 
 <?php // 背景画像の表示　?>
@@ -16,26 +17,33 @@
 	<?= Asset::img('bg/battle_bg.png', array('alt' => 'background')) ?>
 </div>
 
+<?php // javascriptで使用するデータをセットする ?>
+<script id="tile_data_array" src="<?= APP_URL ?>public/assets/js/piece.js" tile_data = '<?= json_encode($tile) ?>'></script>
+<script id="piece_position_array" src="<?= APP_URL ?>public/assets/js/piece.js" tile_data = '<?= json_encode($player_position) ?>'></script>
+
 <?php // マスを表示する ?>
 <div id="square">
-	<?php // タイルにindexを付与するためのカウンタ
+	<?php
+	// タイルにindexを付与するためのカウンタ
 	$counter = 0;
 	?>
 
-	<?php // 縦列のループ
+	<?php
+	// 縦列のループ
 	for ($i = 0; $i < 8; $i++):
 		?>
 		<div class="square_line<?= $i + 1 ?>">
 
-			<?php // 横列のループ
+			<?php
+			// 横列のループ
 			for ($j = 1; $j <= 8; $j++):
 				?>
 
-						<?php // イメージの描画処理を行う   ?>
+						<?php // イメージの描画処理を行う    ?>
 				<div class="square_column<?= $j ?>">
 
-					<div id="tile<?= $counter ?>" class="tile" onclick="get_tile_data()">
-						<?= Asset::img('object/tile' . $tile['tile_type'][($j - 1 ) + (8 * $i)] . '.png', array('alt' => 'tile')) ?>
+					<div id="tile<?= $counter ?>" class="tile" onclick="get_tile_data(<?= $counter ?>)">
+		<?= Asset::img('object/tile' . $tile['tile_type'][($j - 1 ) + (8 * $i)] . '.png', array('alt' => 'tile')) ?>
 					</div>
 
 				</div>
@@ -79,7 +87,7 @@
 	</div>
 
 	<div id="piece_4_2" onclick="get_piece_data()">	
-		<?= Asset::img('chara/chara_p4.png', array('class' => 'piece_size', 'alt' => 'player')) ?>
+<?= Asset::img('chara/chara_p4.png', array('class' => 'piece_size', 'alt' => 'player')) ?>
 	</div>
 </div>
 

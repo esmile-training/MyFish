@@ -19,8 +19,13 @@ function get_piece_data()
 	console.log('get_piece_data()を実行');
 }
 
-// タイルをクリック時にその駒のデータを取得する
-function get_tile_data()
+// タイルをクリック時にそのタイルのデータを取得する
+function get_tile_data(arg_counter)
 {
-	console.log('get_tile_data()を実行');
+	// タイルデータの配列にアクセスする
+	var $tile_data = $('#tile_data_array');
+	var tile_number = arg_counter;
+	// データを取得してコンソールに表示してみる
+	var tile_data_array = JSON.parse($tile_data.attr('tile_data'));
+	console.log(tile_number);
 }
