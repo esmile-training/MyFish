@@ -14,9 +14,9 @@ function init_position()
 }
 
 // 駒をクリック時にその駒のデータを取得する
-function get_piece_data()
+function get_piece_data(arg_id)
 {
-	console.log('get_piece_data()を実行');
+	console.log(arg_id);
 }
 
 // タイルをクリック時にそのタイルのデータを取得する
