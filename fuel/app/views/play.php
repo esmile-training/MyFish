@@ -18,8 +18,14 @@
 </div>
 
 <?php // javascriptで使用するデータをセットする ?>
-<script id="tile_data_array" src="<?= APP_URL ?>public/assets/js/piece.js" tile_data = '<?= json_encode($tile) ?>'></script>
-<script id="piece_position_array" src="<?= APP_URL ?>public/assets/js/piece.js" tile_data = '<?= json_encode($player_position) ?>'></script>
+<script id="tile_data_array" src="<?= APP_URL ?>public/assets/js/piece.js"
+tile_data = '<?= json_encode($tile) ?>'></script>
+
+<script id="piece_position_array" src="<?= APP_URL ?>public/assets/js/piece.js"
+piece_data = '<?= json_encode($player_position) ?>'></script>
+
+<script id="piece_offset_array" src="<?= APP_URL ?>public/assets/js/piece.js"
+piece_offset_data = '<?= json_encode($piece_position_offset) ?>'></script>
 
 <?php // マスを表示する ?>
 <div id="square">
@@ -58,39 +64,39 @@
 
 		<?php // プレイヤーの駒を表示する   ?>
 <div id="piece">
-	<div id="piece_1_1" class="piece_size" number="11" onclick="get_piece_data(this.id)">
+	<div id="piece1_1" class="piece_size" number="11" onclick="get_piece_data(this.id)">
 		<?= Asset::img('chara/chara_p1.png', array('class' => 'piece_size', 'alt' => 'player')) ?>
 	</div>
 
-	<div id="piece_1_2" class="piece_size" number="12" onclick="get_piece_data(this.id)">
+	<div id="piece1_2" class="piece_size" number="12" onclick="get_piece_data(this.id)">
 		<?= Asset::img('chara/chara_p1.png', array('class' => 'piece_size', 'alt' => 'player')) ?>
 	</div>
 
-	<div id="piece_2_1" class="piece_size" number="21" onclick="get_piece_data(this.id)">
+	<div id="piece2_1" class="piece_size" number="21" onclick="get_piece_data(this.id)">
 		<?= Asset::img('chara/chara_p2.png', array('class' => 'piece_size', 'alt' => 'player')) ?>
 	</div>
 
-	<div id="piece_2_2" class="piece_size" number="22" onclick="get_piece_data(this.id)">
+	<div id="piece2_2" class="piece_size" number="22" onclick="get_piece_data(this.id)">
 		<?= Asset::img('chara/chara_p2.png', array('class' => 'piece_size', 'alt' => 'player')) ?>
 	</div>
 
-	<div id="piece_3_1" class="piece_size" number="31" onclick="get_piece_data(this.id)">
+	<div id="piece3_1" class="piece_size" number="31" onclick="get_piece_data(this.id)">
 		<?= Asset::img('chara/chara_p3.png', array('class' => 'piece_size', 'alt' => 'player')) ?>
 	</div>
 
-	<div id="piece_3_2" class="piece_size" number="32" onclick="get_piece_data(this.id)">
+	<div id="piece3_2" class="piece_size" number="32" onclick="get_piece_data(this.id)">
 		<?= Asset::img('chara/chara_p3.png', array('class' => 'piece_size', 'alt' => 'player')) ?>
 	</div>
 
-	<div id="piece_4_1" class="piece_size" number="41" onclick="get_piece_data(this.id)">
+	<div id="piece4_1" class="piece_size" number="41" onclick="get_piece_data(this.id)">
 		<?= Asset::img('chara/chara_p4.png', array('class' => 'piece_size', 'alt' => 'player')) ?>
 	</div>
 
-	<div id="piece_4_2" class="piece_size" number="42" onclick="get_piece_data(this.id)">	
+	<div id="piece4_2" class="piece_size" number="42" onclick="get_piece_data(this.id)">	
 <?= Asset::img('chara/chara_p4.png', array('class' => 'piece_size', 'alt' => 'player')) ?>
 	</div>
 </div>
 
 <script>
-	//init_position();
+	init_position();
 </script>
