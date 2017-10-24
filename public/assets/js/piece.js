@@ -7,11 +7,13 @@ function init_position()
 {
 	// 駒の配置のオフセットにアクセスする
 	var $piece_offset_data = $('#piece_offset_array');
+
 	// オフセットを取得する
 	var piece_offset = JSON.parse($piece_offset_data.attr('piece_offset_data'));
 
 	// 駒の位置情報にアクセスする
 	var $piece_position_data = $('#piece_position_array');
+
 	// 駒の位置情報を取得する
 	var piece_position = JSON.parse($piece_position_data.attr('piece_data'));
 
@@ -24,7 +26,7 @@ function init_position()
 			var piece = document.getElementById(`piece${i}_${j}`);
 
 			// 駒の要素を取り出す
-			var piece_element = $.inArray(`${i}${j}`,piece_position);
+			var piece_element = $.inArray(`${i}${j}`, piece_position);
 
 			// 駒の位置情報から座標を取り出す
 			var position_x = piece_offset[piece_element].x;
@@ -58,7 +60,6 @@ function get_tile_data(arg_counter)
 
 	// タイルのidを格納する
 	var tile_number = arg_counter;
-	// 数値のみ切り出す
 
 	// データを取得してコンソールに表示してみる
 	var tile_position = JSON.parse($tile_data.attr('tile_data'));
