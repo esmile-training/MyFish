@@ -69,12 +69,11 @@ function get_piece_data(arg_number)
 	// データを格納する
 	selected_piece = piece_id;
 	selected_piece_id = arg_number;
-	element_number_of_piece = $.inArray(piece_id,piece_position);
-	
+	element_number_of_piece = $.inArray(piece_id, piece_position);
+
 	// 動作確認
 	console.log(`piece_element:${element_number_of_piece}`);
 	console.log(`piece_type:${selected_piece}`);
-
 }
 
 
@@ -87,11 +86,11 @@ function get_tile_data(arg_counter)
 	var $tile_array = $('#tile_data_array');
 	var tile_data = JSON.parse($tile_array.attr('tile_data'));
 	var tile_type_data = tile_data['tile_type'];
-	
+
 	// タイルのidを格納する
 	var tile_id = arg_counter;
 	var tile_type = tile_type_data[tile_id];
-	
+
 	// データの格納をする
 	element_number_of_tile = tile_id;
 	selected_tile = tile_type;
@@ -111,7 +110,7 @@ function move_piece()
 	var move_before = selected_piece;
 	// 移動後の配列番号を取得する
 	var move_after = selected_tile;
-	
+
 	// 移動を実施する(仮)
 	// php側の駒の配置のオフセットにアクセスする
 	var $piece_offset_data = $('#piece_offset_array');
@@ -132,5 +131,4 @@ function move_piece()
 	// 座標を駒に適用する
 	piece.style.left = position_x;
 	piece.style.top = position_y;
-
 }
