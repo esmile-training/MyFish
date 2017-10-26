@@ -132,3 +132,36 @@ function move_piece()
 	piece.style.left = position_x;
 	piece.style.top = position_y;
 }
+
+
+//*********************************
+// 2点間の線形補完を行う(y座標を求める)
+//*********************************
+function leap(arg_x1,arg_y1,arg_x2,arg_y2,arg_x)
+{
+	// 計算結果を格納する変数
+	var amount_of_movement_y;
+	// 点1の座標
+	var point1_x = arg_x1;
+	var point1_y = arg_y1;
+	// 点2の座標
+	var point2_x = arg_x2;
+	var point2_y = arg_y2;
+	// xの移動量
+	var amount_of_movement_x = arg_x;
+
+	// y方向の移動量を求めて、変数に格納する
+	amount_of_movement_y = point1_y + (point2_y - point1_y)
+			* (amount_of_movement_x - point1_x) / (point2_x - point1_x);
+
+	return amount_of_movement_y;
+}
+
+
+//******************
+// 得点を加算する処理
+//******************
+function add_point(arg_turn_player)
+{
+	
+}
