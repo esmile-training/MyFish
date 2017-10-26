@@ -163,5 +163,8 @@ function leap(arg_x1,arg_y1,arg_x2,arg_y2,arg_x)
 //******************
 function add_point(arg_turn_player)
 {
+	// 現在のターンプレイヤーを取得する
+	var turn_player = arg_turn_player;
+	
 	
 }
