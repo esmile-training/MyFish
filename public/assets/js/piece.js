@@ -168,3 +168,18 @@ function add_point(arg_turn_player)
 	
 	
 }
+
+//class Porygon {
+//  constructor(height, width) {
+//    this.height = height;
+//    this.width = width;
+//  }
+//  
+//  get area() {
+//    return this.calcArea();
+//  }
+//
+//  calcArea() {
+//    return this.height + this.width;
+//  }
+//}

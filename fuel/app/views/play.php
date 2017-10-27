@@ -98,5 +98,9 @@ piece_offset_data = '<?= json_encode($piece_position_offset) ?>'></script>
 </div>
 
 <script>
+	
+//	var a = new Porygon(10,10);	
+//	var hoge = a.calcArea();
+//	console.log(hoge);
 	init_position();
 </script>
