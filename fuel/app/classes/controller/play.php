@@ -34,6 +34,11 @@ class Controller_play extends Controller_Base_Game
 		// ターンプレイヤーの取得
 		$this->view_data['turn_player'] = $this->view_data['game_data']['turn_player'];
 
+		// javascriptで使用するデータをjsonに変換する
+		$this->view_data['json_tile_data'] = json_encode($this->view_data['tile']);
+		$this->view_data['json_player_position'] = json_encode($this->view_data['player_position']);
+		$this->view_data['json_piece_position_offset'] = json_encode($this->view_data['piece_position_offset']);
+
 		// viewへ移動する
 		View_Wrap::contents('play', $this->view_data);
 	}

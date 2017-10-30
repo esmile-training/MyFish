@@ -19,13 +19,13 @@
 
 <?php // javascriptで使用するデータをセットする ?>
 <script id="tile_data_array" src="<?= APP_URL ?>public/assets/js/piece.js"
-tile_data = '<?= json_encode($tile) ?>'></script>
+tile_data = '<?php $json_tile_data ?>'></script>
 
 <script id="piece_position_array" src="<?= APP_URL ?>public/assets/js/piece.js"
-piece_data = '<?= json_encode($player_position) ?>'></script>
+piece_data = '<?php $json_player_position ?>'></script>
 
 <script id="piece_offset_array" src="<?= APP_URL ?>public/assets/js/piece.js"
-piece_offset_data = '<?= json_encode($piece_position_offset) ?>'></script>
+piece_offset_data = '<?php $json_piece_position_offset ?>'></script>
 
 <?php // マスを表示する ?>
 <div id="square">
