@@ -57,25 +57,29 @@ function init_position()
 
 //******************
 // 駒のデータを取得する
+// ※ajaxの実験用として使用中
 //******************
 function get_piece_data(arg_number)
 {
-	// 駒の要素にアクセスして、駒の番号を取り出す
-	var piece_data = document.getElementById(arg_number);
-	var piece_id = piece_data.getAttribute('number');
+//	// 駒の要素にアクセスして、駒の番号を取り出す
+//	var piece_data = document.getElementById(arg_number);
+//	var piece_id = piece_data.getAttribute('number');
+//
+//	// php側の駒の位置情報にアクセスする
+//	var $piece_position_data = $('#piece_position_array');
+//	var piece_position = JSON.parse($piece_position_data.attr('piece_data'));
+//
+//	// データを格納する
+//	selected_piece = piece_id;
+//	selected_piece_id = arg_number;
+//	element_number_of_piece = $.inArray(piece_id, piece_position);
+//
+//	// 動作確認
+//	console.log(`piece_element:${element_number_of_piece}`);
+//	console.log(`piece_type:${selected_piece}`);
 
-	// php側の駒の位置情報にアクセスする
-	var $piece_position_data = $('#piece_position_array');
-	var piece_position = JSON.parse($piece_position_data.attr('piece_data'));
+	
 
-	// データを格納する
-	selected_piece = piece_id;
-	selected_piece_id = arg_number;
-	element_number_of_piece = $.inArray(piece_id, piece_position);
-
-	// 動作確認
-	console.log(`piece_element:${element_number_of_piece}`);
-	console.log(`piece_type:${selected_piece}`);
 }
 
 
