@@ -9,11 +9,6 @@
     margin-left: 70px;
 }
 
-/*背景の設定*/
-.background{
-	position: absolute;
-}
-
 /*タイルそのものの設定*/
 .tile{
 	position: absolute;

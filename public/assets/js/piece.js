@@ -16,6 +16,8 @@ var element_number_of_piece = null;
 var selected_tile = null;
 // タイルの配列上での要素番号を格納する変数
 var element_number_of_tile = null;
+// 獲得予定の得点を格納する変数
+var earned_score = null;
 
 
 //*********************

@@ -30,14 +30,16 @@ class Controller_play extends Controller_Base_Game
 
 		// プレイヤーの位置情報を配列に変換する
 		$this->view_data['player_position'] = explode(",", $this->view_data['game_data']['player_position']);
-
 		// ターンプレイヤーの取得
 		$this->view_data['turn_player'] = $this->view_data['game_data']['turn_player'];
+		// スコアデータの取得をする(配列に直す)
+		$this->view_data['score_data'] = explode(",",$this->view_data['game_data']['score']);
 
 		// javascriptで使用するデータをjsonに変換する
 		$this->view_data['json_tile_data'] = json_encode($this->view_data['tile']);
 		$this->view_data['json_player_position'] = json_encode($this->view_data['player_position']);
 		$this->view_data['json_piece_position_offset'] = json_encode($this->view_data['piece_position_offset']);
+		$this->view_data['json_score_data'] = json_encode($this->view_data['score_data']);
 
 		// viewへ移動する
 		View_Wrap::contents('play', $this->view_data);

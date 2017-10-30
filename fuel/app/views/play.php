@@ -5,6 +5,7 @@
 ?>
 
 <?php // cssの読み込み ?>
+<?= Asset::css('bord_layout.css') ?>
 <?= Asset::css('square_layout.css') ?>
 <?= Asset::css('piece_layout.css') ?>
 
@@ -18,6 +19,7 @@
 </div>
 
 <?php // javascriptで使用するデータをセットする ?>
+
 <script id="tile_data_array" src="<?= APP_URL ?>public/assets/js/piece.js"
 tile_data = '<?php $json_tile_data ?>'></script>
 
@@ -26,6 +28,9 @@ piece_data = '<?php $json_player_position ?>'></script>
 
 <script id="piece_offset_array" src="<?= APP_URL ?>public/assets/js/piece.js"
 piece_offset_data = '<?php $json_piece_position_offset ?>'></script>
+
+<script id="score_data_array" src="<?= APP_URL ?>public/assets/js/piece.js"
+score_data = '<?php $json_score_data ?>'></script>
 
 <?php // マスを表示する ?>
 <div id="square">
