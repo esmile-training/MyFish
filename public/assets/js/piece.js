@@ -61,22 +61,22 @@ function init_position()
 //******************
 function get_piece_data(arg_number)
 {
-//	// 駒の要素にアクセスして、駒の番号を取り出す
-//	var piece_data = document.getElementById(arg_number);
-//	var piece_id = piece_data.getAttribute('number');
-//
-//	// php側の駒の位置情報にアクセスする
-//	var $piece_position_data = $('#piece_position_array');
-//	var piece_position = JSON.parse($piece_position_data.attr('piece_data'));
-//
-//	// データを格納する
-//	selected_piece = piece_id;
-//	selected_piece_id = arg_number;
-//	element_number_of_piece = $.inArray(piece_id, piece_position);
-//
-//	// 動作確認
-//	console.log(`piece_element:${element_number_of_piece}`);
-//	console.log(`piece_type:${selected_piece}`);
+	// 駒の要素にアクセスして、駒の番号を取り出す
+	var piece_data = document.getElementById(arg_number);
+	var piece_id = piece_data.getAttribute('number');
+
+	// php側の駒の位置情報にアクセスする
+	var $piece_position_data = $('#piece_position_array');
+	var piece_position = JSON.parse($piece_position_data.attr('piece_data'));
+
+	// データを格納する
+	selected_piece = piece_id;
+	selected_piece_id = arg_number;
+	element_number_of_piece = $.inArray(piece_id, piece_position);
+
+	// 動作確認
+	console.log(`piece_element:${element_number_of_piece}`);
+	console.log(`piece_type:${selected_piece}`);
 
 	
 
@@ -173,6 +173,23 @@ function add_point(arg_turn_player)
 	var turn_player = arg_turn_player;
 	
 	
+}
+
+function ajax_test()
+{
+	
+	$.ajax({
+		type:'POST',
+		url: "http://esmile-sys.sakura.ne.jp/MyFish/matsui/play.php",
+		data:"num = 1",
+		success: function()
+		{
+			console.log('success');
+		},
+		error: function() {
+			console.log('error');
+		}
+	});
 }
 
 //class Porygon {

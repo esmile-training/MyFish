@@ -16,6 +16,8 @@ class Controller_play extends Controller_Base_Game
 						'user_id' => $this->view_data['user']['id']
 					)
 		));
+		
+		$this->view_data['test'] = 0;
 
 		// 駒の表示位置オフセットを読み込む
 		$this->view_data['piece_position_offset'] = Config::load('piece_position_offset');
@@ -66,5 +68,12 @@ class Controller_play extends Controller_Base_Game
 
 		return $next_turn_player;
 	}
-
+	
+	
+	public function test()
+	{
+		$this->view_data['test'] = 10;
+		var_dump($this->view_data['test']);
+	}
+	
 }

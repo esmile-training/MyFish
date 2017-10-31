@@ -13,24 +13,26 @@
 <?= Asset::js('jquery-3.2.1.min.js') ?>
 <?= Asset::js('piece.js') ?>
 
+<?= $test ?>
+
 <?php // 背景画像の表示　?>
 <div class="background">
-	<?= Asset::img('bg/battle_bg.png', array('alt' => 'background')) ?>
+	<?= Asset::img('bg/battle_bg.png', array('alt' => 'background','onclick'=>'ajax_test()')) ?>
 </div>
 
 <?php // javascriptで使用するデータをセットする ?>
 
 <script id="tile_data_array" src="<?= APP_URL ?>public/assets/js/piece.js"
-tile_data = '<?php $json_tile_data ?>'></script>
+tile_data = '<?= $json_tile_data ?>'></script>
 
 <script id="piece_position_array" src="<?= APP_URL ?>public/assets/js/piece.js"
-piece_data = '<?php $json_player_position ?>'></script>
+piece_data = '<?= $json_player_position ?>'></script>
 
 <script id="piece_offset_array" src="<?= APP_URL ?>public/assets/js/piece.js"
-piece_offset_data = '<?php $json_piece_position_offset ?>'></script>
+piece_offset_data = '<?= $json_piece_position_offset ?>'></script>
 
 <script id="score_data_array" src="<?= APP_URL ?>public/assets/js/piece.js"
-score_data = '<?php $json_score_data ?>'></script>
+score_data = '<?= $json_score_data ?>'></script>
 
 <?php // マスを表示する ?>
 <div id="square">
