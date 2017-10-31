@@ -19,7 +19,7 @@
 </div>
 <?= Form::close(); ?>
 
-<a href="<?= APP_URL ?>play/index">プレイ画面へ</a>
+<a href="<?= APP_URL ?>ajax_test/index">プレイ画面へ</a>
 
 <?php if ($error_msg): ?>
 	<div>
