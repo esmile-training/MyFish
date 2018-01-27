@@ -13,14 +13,13 @@
 <?= Asset::js('jquery-3.2.1.min.js') ?>
 <?= Asset::js('piece.js') ?>
 
-<?= $test ?>
-
 <?php // 背景画像の表示　?>
 <div class="background">
-	<?= Asset::img('bg/battle_bg.png', array('alt' => 'background','onclick'=>'ajax_test()')) ?>
+	<?= Asset::img('bg/battle_bg.png', array('alt' => 'background', 'onclick' => 'ajax_test()')) ?>
 </div>
 
 <?php // javascriptで使用するデータをセットする ?>
+
 
 <script id="tile_data_array" src="<?= APP_URL ?>public/assets/js/piece.js"
 tile_data = '<?= $json_tile_data ?>'></script>
@@ -52,25 +51,25 @@ score_data = '<?= $json_score_data ?>'></script>
 			for ($j = 1; $j <= 8; $j++):
 				?>
 
-						<?php // イメージの描画処理を行う    ?>
+				<?php // イメージの描画処理を行う    ?>
 				<div class="square_column<?= $j ?>">
 
-					<div id="tile<?= $counter ?>" class="tile" onclick="get_tile_data(<?= $counter ?>)">
-		<?= Asset::img('object/tile' . $tile['tile_type'][($j - 1 ) + (8 * $i)] . '.png', array('alt' => 'tile')) ?>
+					<div id="tile<?= $counter ?>" class="tile" onclick="get_tile_data(<?= $counter ?>,<?=$i?>)">
+						<?= Asset::img('object/tile' . $tile['tile_type'][($j - 1 ) + (8 * $i)] . '.png', array('alt' => 'tile')) ?>
 					</div>
 
 				</div>
 
-			<?php $counter++; ?>
+				<?php $counter++; ?>
 
-	<?php endfor; ?>
+			<?php endfor; ?>
 		</div>
-<?php endfor; ?>
+	<?php endfor; ?>
 
 </div>
 
-		<?php // プレイヤーの駒を表示する   ?>
-<div id="piece">
+<?php // プレイヤーの駒を表示する   ?>
+<a id="piece">
 	<div id="piece1_1" class="piece_size" number="11" onclick="get_piece_data(this.id)">
 		<?= Asset::img('chara/chara_p1.png', array('class' => 'piece_size', 'alt' => 'player')) ?>
 	</div>
@@ -100,12 +99,26 @@ score_data = '<?= $json_score_data ?>'></script>
 	</div>
 
 	<div id="piece4_2" class="piece_size" number="42" onclick="get_piece_data(this.id)">	
-<?= Asset::img('chara/chara_p4.png', array('class' => 'piece_size', 'alt' => 'player')) ?>
+		<?= Asset::img('chara/chara_p4.png', array('class' => 'piece_size', 'alt' => 'player')) ?>
 	</div>
+
+</a>
+
+<?php // スコアボードの表示 ?>
+<div class="score_bord">
+	<?php
+	for ($i = 1; $i < 5; $i++):
+		?>
+		<div class="score_bord<?=$i?>">
+			<?= Asset::img('frame/score_frame.png', array('class' => 'score_bord', 'alt' => 'score_bord')) ?>
+		</div>
+		<?php
+	endfor;
+	?>
 </div>
 
 <script>
-	
+
 //	var a = new Porygon(10,10);	
 //	var hoge = a.calcArea();
 //	console.log(hoge);

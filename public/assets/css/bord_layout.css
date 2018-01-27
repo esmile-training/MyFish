@@ -6,4 +6,28 @@
 	position: absolute;
 }
 
+/*スコアボードの共通表示設定*/
+.score_bord{
+	position:absolute;
+	margin-top: 6px;
+	margin-left: 435px;
+}
 
+/*スコアボードの個別表示設定*/
+.score_bord1{
+	position:absolute;
+	top:0px;
+}
+.score_bord2{
+	position:absolute;
+	top:175px;
+	
+}
+.score_bord3{
+	position:absolute;
+	top:350px;
+}
+.score_bord4{
+	position:absolute;
+	top:525px;
+}
