@@ -262,6 +262,47 @@ function search_moveable_squares(arg_line,arg_piece_element)
 		counter++;
 	}
 
+
+	// 自分から右下方向のマスの検索を行う
+	// フラグのリセット
+	flag = switch_flag;
+	while((line_number + counter) <= 7)
+	{
+		if(flag == true)
+		{
+			// 配列に移動可能マスの要素数を計算して入れる
+			bottom_right += 8;
+			// 数値を配列へプッシュする
+			function_data.bottom_right.push(bottom_right);
+
+			// フラグを切り替える
+			flag = false;
+		}
+		else if(flag == false)
+		{
+			// 配列に移動可能マスの要素数を計算して入れる
+			bottom_right += 9;
+			// 数値を配列へプッシュする
+			function_data.bottom_right.push(bottom_right);
+
+			// フラグを切り替える
+			flag = true;
+		}
+
+		// 隅のマスに到達したかを判定する
+		if(
+				function_data.bottom_right[counter] == 7 
+				|| function_data.bottom_right[counter] == 23 
+				|| function_data.bottom_right[counter] == 39
+				|| function_data.bottom_right[counter] == 55 
+				|| function_data.bottom_right[counter] == 62)
+		{
+			 break;
+		}
+
+		counter++;
+	}
+
 //	// 自分から上方向のマスの検索を行う
 //	while((line_number - counter) >= 1)
 //	{
@@ -297,6 +338,7 @@ function search_moveable_squares(arg_line,arg_piece_element)
 	
 	console.log(`右上:${function_data.upper_right}`);
 	console.log(`左上:${function_data.upper_left}`);
+	console.log(`右下:${function_data.bottom_right}`);
 
 	//console.log(`カウント:${counter}`);
 //	// カウンタのリセットをする
