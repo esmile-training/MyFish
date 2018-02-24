@@ -110,7 +110,7 @@ score_data = '<?= $json_score_data ?>'></script>
 	for ($i = 1; $i < 5; $i++):
 		?>
 		<div class="score_bord<?=$i?>">
-			<?= Asset::img('frame/score_frame.png', array('class' => 'score_bord', 'alt' => 'score_bord')) ?>
+			<?= Asset::img('frame/score_frame_p'.$i.'.png', array('class' => 'score_bord', 'alt' => 'score_bord')) ?>
 		</div>
 		<?php
 	endfor;

@@ -9,7 +9,7 @@
 /*スコアボードの共通表示設定*/
 .score_bord{
 	position:absolute;
-	margin-top: 6px;
+	margin-top: 0px;
 	margin-left: 435px;
 }
 
