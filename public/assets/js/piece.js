@@ -166,7 +166,7 @@ function search_moveable_squares(arg_line,arg_piece_element)
 	var upper_left = piece_element_number;
 	var bottom_left = piece_element_number;
 	var left = piece_element_number;
-	
+
 	// 移動可能膾を格納する配列を初期化する
 	function_data.upper_left=[];
 	function_data.upper_right=[];
@@ -186,7 +186,7 @@ function search_moveable_squares(arg_line,arg_piece_element)
 	}
 
 	console.log(switch_flag);
-	
+
 	// 自分から右上方向のマスの検索を行う
 	// フラグのリセット
 	flag = switch_flag;
@@ -266,7 +266,9 @@ function search_moveable_squares(arg_line,arg_piece_element)
 	// 自分から右下方向のマスの検索を行う
 	// フラグのリセット
 	flag = switch_flag;
-	while((line_number + counter) <= 7)
+	// カウンタのリセット
+	counter = 0;
+	while((line_number + counter) <= 6)
 	{
 		if(flag == true)
 		{
@@ -290,12 +292,8 @@ function search_moveable_squares(arg_line,arg_piece_element)
 		}
 
 		// 隅のマスに到達したかを判定する
-		if(
-				function_data.bottom_right[counter] == 7 
-				|| function_data.bottom_right[counter] == 23 
-				|| function_data.bottom_right[counter] == 39
-				|| function_data.bottom_right[counter] == 55 
-				|| function_data.bottom_right[counter] == 62)
+		if(function_data.bottom_right[counter] == 7 || function_data.bottom_right[counter] == 23
+			||function_data.bottom_right[counter] == 39|| function_data.bottom_right[counter] == 55)
 		{
 			 break;
 		}
@@ -303,86 +301,51 @@ function search_moveable_squares(arg_line,arg_piece_element)
 		counter++;
 	}
 
-//	// 自分から上方向のマスの検索を行う
-//	while((line_number - counter) >= 1)
-//	{
-//		if(switch_flag == true)
-//		{
-//			// 配列に移動可能マスの要素数を計算して入れる
-//			upper_right -= 8;
-//			upper_left -= 9;
-//
-//			// 数値を配列へプッシュする
-//			function_data.upper_right.push(upper_right);
-//			function_data.upper_left.push(upper_left);
-//
-//			// フラグを切り替える
-//			switch_flag = false;
-//		}
-//		else if(switch_flag == false)
-//		{
-//			// 配列に移動可能マスの要素数を計算して入れる
-//			upper_right -= 7;
-//			upper_left -= 8;
-//
-//			// 数値を配列へプッシュする
-//			function_data.upper_right.push(upper_right);
-//			function_data.upper_left.push(upper_left);
-//
-//			// フラグを切り替える
-//			switch_flag = true;
-//		}
-//
-//		counter++;
-//	}
-	
+
+	// 自分から左下方向のマスの検索を行う
+	// フラグのリセット
+	flag = switch_flag;
+	// カウンタのリセット
+	counter = 0;
+	while((line_number + counter) <= 6)
+	{
+		if(flag == true)
+		{
+			// 配列に移動可能マスの要素数を計算して入れる
+			bottom_left += 7;
+			// 数値を配列へプッシュする
+			function_data.bottom_left.push(bottom_left);
+
+			// フラグを切り替える
+			flag = false;
+		}
+		else if(flag == false)
+		{
+			// 配列に移動可能マスの要素数を計算して入れる
+			bottom_left += 8;
+			// 数値を配列へプッシュする
+			function_data.bottom_left.push(bottom_left);
+
+			// フラグを切り替える
+			flag = true;
+		}
+
+		// 隅のマスに到達したかを判定する
+		if(function_data.bottom_left[counter] == 0 || function_data.bottom_left[counter] == 16
+			||function_data.bottom_left[counter] == 32|| function_data.bottom_left[counter] == 48)
+		{
+			 break;
+		}
+
+		counter++;
+	}
+
+
 	console.log(`右上:${function_data.upper_right}`);
 	console.log(`左上:${function_data.upper_left}`);
 	console.log(`右下:${function_data.bottom_right}`);
+	console.log(`左下:${function_data.bottom_left}`);
 
-	//console.log(`カウント:${counter}`);
-//	// カウンタのリセットをする
-//	var counter = 0;
-//	// 自分から下のマスを検索する
-//	while((line_number + counter) <= 6)
-//	{
-//		if(switch_flag == true)
-//		{
-//			// 配列に移動可能マスの要素数を計算して入れる
-//			bottom_right += 8;
-//			bottom_left += 9;
-//
-//			// 数値を配列へプッシュする
-//			function_data.bottom_right.push(upper_right);
-//			function_data.bottom_left.push(upper_left);
-//
-//			// フラグを切り替える
-//			switch_flag = false;
-//		}
-//		else if(switch_flag == false)
-//		{
-//			// 配列に移動可能マスの要素数を計算して入れる
-//			bottom_right += 7;
-//			bottom_left += 8;
-//
-//			// 数値を配列へプッシュする
-//			function_data.upper_right.push(bottom_right);
-//			function_data.upper_left.push(bottom_left);
-//
-//			// フラグを切り替える
-//			switch_flag = true;
-//		}
-//
-//		counter++;
-//	}
-//	
-//	console.log(`右下:${function_data.bottom_right}`);
-//	console.log(`左下:${function_data.bottom_left}`);
-	
-	// 自分の右方向を検索する
-	
-	// 自分の左方向を検索する
-	
 }
 
 //***************************
