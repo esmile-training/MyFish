@@ -9,42 +9,42 @@
 }
 
 /* 個別の駒の設定 */
-#piece1_1{
+#piece11{
 	top:0px;
 	left: 0px;
 	position: absolute;
 }
-#piece1_2{
+#piece12{
 	top:0px;
 	left: 0px;
 	position: absolute;
 }
-#piece2_1{
+#piece21{
 	top:0px;
 	left: 0px;
 	position: absolute;
 }
-#piece2_2{
+#piece22{
 	top:0px;
 	left: 0px;
 	position: absolute;
 }
-#piece3_1{
+#piece31{
 	top:0px;
 	left: 0px;
 	position: absolute;
 }
-#piece3_2{
+#piece32{
 	top:0px;
 	left: 0px;
 	position: absolute;
 }
-#piece4_1{
+#piece41{
 	top:0px;
 	left: 0px;
 	position: absolute;
 }
-#piece4_2{
+#piece42{
 	top:0px;
 	left: 0px;
 	position: absolute;

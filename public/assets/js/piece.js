@@ -25,12 +25,14 @@ var function_data ={
 	selected_tile : null,
 	// タイルの配列上での要素番号を格納する変数
 	element_number_of_tile : null,
+	// 行
+	line : null,
 	// 行番号
 	line_number : null,
 	// 獲得予定の得点を格納する変数
 	earned_score : 1,
 
-	// 移動可能な場所を格納する配列
+	// 移動方向を格納する配列availabl
 	// 右上配列
 	upper_right : null,
 	// 右下配列
@@ -42,7 +44,22 @@ var function_data ={
 	// 上左下
 	bottom_left : null,
 	// 左配列
-	left : null
+	left : null,
+
+	// 移動可能な右上
+	availabl_upper_right : null,
+	// 移動可能な右下
+	availabl_bottom_right : null,
+	// 移動可能な右
+	availabl_right : null,
+	// 移動可能な左上
+	availabl_upper_left : null,
+	// 移動可能な左下
+	availabl_bottom_left : null,
+	// 移動可能な左
+	availabl_left : null,
+	
+	availabl_move_tile : null
 
 };
 
@@ -60,11 +77,13 @@ function init_position()
 	// php側の駒の位置情報にアクセスする
 	var $piece_position_data = $('#piece_position_array');
 	base_data.piece_position = JSON.parse($piece_position_data.attr('piece_data'));
-
+	console.log(base_data.piece_position);
 	// php側の駒の位置情報にアクセスする
 	var $piece_position_data = $('#piece_position_array');
 	// 駒の位置情報を取得する
 	var piece_position = JSON.parse($piece_position_data.attr('piece_data'));
+	// マスの行情報を取得する
+	function_data.line = base_data.tile_data['line'];
 
 	// プレイヤーの駒の位置をすべて検索する
 	for (var i = 1; i <= 4; i++)
@@ -72,7 +91,7 @@ function init_position()
 		for (var j = 1; j <= 2; j++)
 		{
 			// 駒へアクセスして要素番号を取り出す
-			var piece = document.getElementById(`piece${i}_${j}`);
+			var piece = document.getElementById(`piece${i}${j}`);
 			var piece_element = $.inArray(`${i}${j}`, piece_position);
 
 			// 駒の位置情報から座標を取り出す
@@ -101,19 +120,24 @@ function get_piece_data(arg_number)
 	function_data.selected_piece = piece_id;
 	function_data.selected_piece_id = arg_number;
 	function_data.element_number_of_piece = $.inArray(piece_id, base_data.piece_position);
+	function_data.line_number = function_data.line[function_data.element_number_of_piece];
 
 	function_data.earned_score += 1;
 	
-	// タイル情報の取得
-	get_tile_data(function_data.element_number_of_piece);
-	
-	search_moveable_squares(function_data.line_number,function_data.element_number_of_piece);
-	
+	// 移動可能マスを検索する
+	search_moveable_squares();
+
 	// 動作確認
 	console.log(`選択中の駒:${function_data.selected_piece}`);
 	console.log(`駒の要素番号:${function_data.element_number_of_piece}`);
+	console.log(`駒の行番号:${function_data.line_number}`);
 
-	console.log(function_data.earned_score);
+	// 配列上の駒の位置を変更する
+	//move_piece_on_array();
+	//move_piece_on_screen();
+	
+	// 得点
+	//console.log(function_data.earned_score);
 	
 }
 
@@ -123,40 +147,45 @@ function get_piece_data(arg_number)
 //**********************
 function get_tile_data(arg_counter)
 {
-	// タイルデータの取得をする
-	var tile_type_data = base_data.tile_data['tile_type'];
-	var square_line = base_data.tile_data['line'];
+	// 駒が選択されていなければ処理は行わない
+	if(function_data.selected_piece != null)
+	{
+		// タイルデータの取得をする
+		var tile_type_data = base_data.tile_data['tile_type'];
 
-	// タイルのidを格納する
-	var tile_id = arg_counter;
-	var tile_type = tile_type_data[tile_id];
+		// タイルのidを格納する
+		var tile_id = arg_counter;
+		console.log(tile_id);
+		var tile_type = tile_type_data[tile_id];
 
-	// データの格納をする
-	function_data.element_number_of_tile = tile_id;
-	function_data.selected_tile = tile_type;
-	function_data.line_number = square_line[tile_id];
-	
+		// 駒の移動範囲に該当するかを確認する
+		
+		// データの格納をする
+		function_data.element_number_of_tile = tile_id;
+		function_data.selected_tile = tile_type;
+//		function_data.line_number = function_data.line[tile_id];
 
-	// 動作確認
-	console.log(`マスの要素番号:${function_data.element_number_of_tile}`);
-	console.log(`マスの得点:${function_data.selected_tile}`);
-	console.log(`マスの行番号:${function_data.line_number}`);
+		// 動作確認
+		console.log(`マスの要素番号:${function_data.element_number_of_tile}`);
+		console.log(`マスの得点:${function_data.selected_tile}`);
+//		console.log(`マスの行番号:${function_data.line_number}`);
+	}
 }
 
 //************************
 // 移動可能マスの検索関数
 //************************
-function search_moveable_squares(arg_line,arg_piece_element)
+function search_moveable_squares()
 {	
 	// カウンタ
 	var counter = 0;
 	// 行
-	var line_number = arg_line;
+	var line_number = function_data.line_number;
 	// 選択した駒の要素番号
-	var piece_element_number = arg_piece_element;
+	var piece_element_number = function_data.element_number_of_piece;
 	// 行番号で処理を切り替えるフラグ
 	var switch_flag = null;
-	
+
 	var flag = null;
 	
 	// 計算途中の要素番号を格納する変数を初期化する
@@ -167,7 +196,7 @@ function search_moveable_squares(arg_line,arg_piece_element)
 	var bottom_left = piece_element_number;
 	var left = piece_element_number;
 
-	// 移動可能膾を格納する配列を初期化する
+	// 移動マスを格納する配列を初期化する
 	function_data.upper_left=[];
 	function_data.upper_right=[];
 	function_data.bottom_left=[];
@@ -339,46 +368,307 @@ function search_moveable_squares(arg_line,arg_piece_element)
 
 		counter++;
 	}
+	
+	// 横方向のデータの格納用配列
+	var line_data = [];
+	counter = 0;
+	// 選択対象の横方向のすべての要素を取得する
+	function_data.line.forEach(function(value)
+	{
+		if(value == line_number)
+		{
+			line_data.push(counter);
+		}
+		counter++;
+	});
+	
+	// 移動可能範囲を左右に振り分ける
+	line_data.forEach(function(value){
+		// 右方向
+		if(piece_element_number < value)
+		{
+			function_data.right.push(value);
+		}
+		else if(piece_element_number > value)
+		{
+			function_data.left.push(value);
+		}
+	});
+	
+	// 左側だけ反転させる
+	function_data.left.reverse();
 
+	// 結果の表示
+//	console.log(`右上:${function_data.upper_right}`);
+//	console.log(`左上:${function_data.upper_left}`);
+//	console.log(`右下:${function_data.bottom_right}`);
+//	console.log(`左下:${function_data.bottom_left}`);
+//	console.log(`右:${function_data.right}`);
+//	console.log(`左:${function_data.left}`);
+	
+	// 移動不可範囲を割り出す
+	deadline_detection();
 
-	console.log(`右上:${function_data.upper_right}`);
-	console.log(`左上:${function_data.upper_left}`);
-	console.log(`右下:${function_data.bottom_right}`);
-	console.log(`左下:${function_data.bottom_left}`);
+}
 
+//**************************
+//進行不可を検出する関数
+//**************************
+function deadline_detection()
+{
+	// 移動可能マスを格納する配列を初期化する
+	function_data.availabl_upper_left=[];
+	function_data.availabl_upper_right=[];
+	function_data.availabl_bottom_left=[];
+	function_data.availabl_bottom_right=[];
+	function_data.availabl_left=[];
+	function_data.availabl_right=[];
+	function_data.availabl_move_tile=[];
+
+	// 駒のデータと比較を行い移動不可のマスを探す
+	// 右上
+	function_data.upper_right.some(function(value)
+	{
+		if(base_data.tile_data.tile_type[value] != 4)
+		{
+			if(base_data.piece_position[value] == 0)
+			{
+				function_data.availabl_upper_right.push(value);
+			}
+			else
+			{
+				return true;
+			}
+		}
+		else
+		{
+			return true;
+		}
+	});
+
+	// 左上
+	function_data.upper_left.some(function(value)
+	{
+		if(base_data.tile_data.tile_type[value] != 4)
+		{
+			if(base_data.piece_position[value] == 0)
+			{
+				function_data.availabl_upper_left.push(value);
+			}
+			else
+			{
+				return true;
+			}
+		}
+		else
+		{
+			return true;
+		}
+	});
+
+	// 右
+	function_data.right.some(function(value)
+	{
+		if(base_data.tile_data.tile_type[value] != 4)
+		{
+			if(base_data.piece_position[value] == 0)
+			{
+				function_data.availabl_right.push(value);
+			}
+			else
+			{
+				return true;
+			}
+		}
+		else
+		{
+			return true;
+		}
+		
+	});
+
+	// 左
+	function_data.left.some(function(value)
+	{
+		console.log(base_data.piece_position[value])
+		console.log(value);
+		if(base_data.tile_data.tile_type[value] != 4)
+		{
+			if(base_data.piece_position[value] == 0)
+			{
+				function_data.availabl_left.push(value);
+			}
+			else
+			{
+				return true;
+			}
+		}
+		else
+		{
+			return true;
+		}
+		
+	});
+	
+	// 右下
+	function_data.bottom_right.some(function(value)
+	{
+		if(base_data.tile_data.tile_type[value] != 4)
+		{
+			if(base_data.piece_position[value] == 0)
+			{
+				function_data.availabl_bottom_right.push(value);
+			}
+			else
+			{
+				return true;
+			}	
+		}
+		else
+		{
+			return true;
+		}
+	});
+
+	// 左下
+	function_data.bottom_left.some(function(value)
+	{
+		if(base_data.tile_data.tile_type[value] != 4)
+		{
+			if(base_data.piece_position[value] == 0)
+			{
+				function_data.availabl_bottom_left.push(value);
+			}
+			else
+			{
+				return true;
+			}	
+		}
+		else
+		{
+			return true;
+		}
+	});
+	
+	// 処理結果を一列の配列として格納する
+	Array.prototype.push.apply(function_data.availabl_move_tile,function_data.availabl_upper_right);
+	Array.prototype.push.apply(function_data.availabl_move_tile,function_data.availabl_right);
+	Array.prototype.push.apply(function_data.availabl_move_tile,function_data.availabl_bottom_right);
+	Array.prototype.push.apply(function_data.availabl_move_tile,function_data.availabl_upper_left);
+	Array.prototype.push.apply(function_data.availabl_move_tile,function_data.availabl_left);
+	Array.prototype.push.apply(function_data.availabl_move_tile,function_data.availabl_bottom_left);
+
+	console.log(`移動可能な右上マス:${function_data.availabl_upper_right}`);
+	console.log(`移動可能な右マス:${function_data.availabl_right}`);
+	console.log(`移動可能な右下マス:${function_data.availabl_bottom_right}`);
+	console.log(`移動可能な左上マス:${function_data.availabl_upper_left}`);
+	console.log(`移動可能な左マス:${function_data.availabl_left}`);
+	console.log(`移動可能な左下マス:${function_data.availabl_bottom_left}`);
+	
+	console.log(`移動可能なマス:${function_data.availabl_move_tile}`);
+
+}
+
+//**************************
+// 配列上の駒の位置を変更する
+//**************************
+function move_piece_on_array()
+{
+	// 選択中の駒の要素番号を取得する
+	var piece_num = function_data.element_number_of_piece;
+	// 選択中のマスの要素番号を取得する
+	var tile_num = function_data.element_number_of_tile;
+	// 駒のIDを取得する
+	var piece_id = function_data.selected_piece;
+
+	// 駒の配列上でのマスの要素番号の位置に選択中の駒の値を入れる
+	base_data.piece_position[tile_num] = piece_id;
+
+	// 駒の移動前の位置の値を0に変更する
+	base_data.piece_position[piece_num] = '0';
+	console.log(base_data.piece_position);
+
+	// 元居たマスを対象にステータス変更関数を実行する
+	change_tile_type(piece_num);
+	console.log(base_data.tile_data);
+
+}
+
+//**************************
+// 画面上の駒の位置を変更する
+//**************************
+function move_piece_on_screen()
+{
+	// 選択中の駒の要素番号を取得する
+	var piece_num = function_data.element_number_of_piece;
+	// 選択中のマスの要素番号を取得する
+	var tile_num = function_data.element_number_of_tile;
+	// 駒のIDを取得する
+	var piece_id = function_data.selected_piece;
+	
+	// 駒へアクセスして要素番号を取り出す
+	var piece = document.getElementById(`piece${piece_id}`);
+
+	// 移動先の座標を取得する
+	var position_x = base_data.piece_offset[tile_num].x;
+	var position_y = base_data.piece_offset[tile_num].y;
+
+	console.log(`x:${position_x}`);
+	console.log(`y:${position_y}`);
+
+	console.log(base_data.piece_offset);
+	// 座標を駒に適用する
+	piece.style.left = position_x;
+	piece.style.top = position_y;
+}
+
+//*************
+// 移動実行関数
+//*************
+function move_execute()
+{
+	
+}
+
+//********************************
+// 配列の中身が存在するかを確認する
+//********************************
+function is_empty(arg_object)
+{
+	return !Object.keys(arg_object).length;
 }
 
 //***************************
 // 指定された座標へ駒を移動させる
 //***************************
-function move_piece()
-{
-	// 移動前の配列番号を取得する
-	var move_before = function_data.selected_piece;
-	// 移動後の配列番号を取得する
-	var move_after = function_data.selected_tile;
-
-	// 移動を実施する(仮)
-	// php側の駒の配置のオフセットにアクセスする
-	var $piece_offset_data = $('#piece_offset_array');
-	var piece_offset = JSON.parse($piece_offset_data.attr('piece_offset_data'));
-
-	// php側の駒の位置情報にアクセスする
-	var $piece_position_data = $('#piece_position_array');
-	// 駒の位置情報を取得する
-	var piece_position = JSON.parse($piece_position_data.attr('piece_data'));
-
-	// 駒へアクセスして要素番号を取り出す
-	var piece = document.getElementById(`${function_data.selected_piece_id}`);
-
-	// 駒の位置情報から座標を取り出す
-	var position_x = piece_offset[function_data.element_number_of_piece].x;
-	var position_y = piece_offset[function_data.element_number_of_piece].y;
-
-	// 座標を駒に適用する
-	piece.style.left = position_x;
-	piece.style.top = position_y;
-}
+//function move_piece()
+//{
+//	// 移動前の配列番号を取得する
+//	var move_before = function_data.selected_piece;
+//	// 移動後の配列番号を取得する
+//	var move_after = function_data.selected_tile;
+//
+//	// 移動を実施する(仮)
+//	// php側の駒の配置のオフセットにアクセスする
+//	var $piece_offset_data = $('#piece_offset_array');
+//	var piece_offset = JSON.parse($piece_offset_data.attr('piece_offset_data'));
+//
+//	// php側の駒の位置情報にアクセスする
+//	var $piece_position_data = $('#piece_position_array');
+//	// 駒の位置情報を取得する
+//	var piece_position = JSON.parse($piece_position_data.attr('piece_data'));
+//
+//	// 駒へアクセスして要素番号を取り出す
+//	var piece = document.getElementById(`${function_data.selected_piece_id}`);
+//
+//	// 駒の位置情報から座標を取り出す
+//	var position_x = piece_offset[function_data.element_number_of_piece].x;
+//	var position_y = piece_offset[function_data.element_number_of_piece].y;
+//
+//	// 座標を駒に適用する
+//	piece.style.left = position_x;
+//	piece.style.top = position_y;
+//}
 
 
 //*********************************
@@ -404,6 +694,20 @@ function leap(arg_x1,arg_y1,arg_x2,arg_y2,arg_x)
 	return amount_movement;
 }
 
+//********************************
+// 移動後のマスのタイプを切り替える
+//********************************
+function change_tile_type(arg_target_tile_number)
+{
+	// 変更対象のマスを取得する
+	var target = arg_target_tile_number;
+	
+	// マスのタイプを4に切り替える
+	base_data.tile_data.tile_type[target] = '4';
+	
+	// 結果表示
+	console.log(base_data.tile_data.tile_type[target]);
+}
 
 //******************
 // 得点を加算する処理
