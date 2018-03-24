@@ -31,3 +31,10 @@
 	position:absolute;
 	top:525px;
 }
+
+#decision_button
+{
+	position:absolute;
+	top:15px;
+	left: 650px;
+}

@@ -132,10 +132,6 @@ function get_piece_data(arg_number)
 	console.log(`駒の要素番号:${function_data.element_number_of_piece}`);
 	console.log(`駒の行番号:${function_data.line_number}`);
 
-	// 配列上の駒の位置を変更する
-	//move_piece_on_array();
-	//move_piece_on_screen();
-	
 	// 得点
 	//console.log(function_data.earned_score);
 	
@@ -147,6 +143,10 @@ function get_piece_data(arg_number)
 //**********************
 function get_tile_data(arg_counter)
 {
+	// データの格納先を初期化する
+	function_data.element_number_of_tile = null;
+	function_data.selected_tile = null;
+	
 	// 駒が選択されていなければ処理は行わない
 	if(function_data.selected_piece != null)
 	{
@@ -159,16 +159,21 @@ function get_tile_data(arg_counter)
 		var tile_type = tile_type_data[tile_id];
 
 		// 駒の移動範囲に該当するかを確認する
-		
-		// データの格納をする
-		function_data.element_number_of_tile = tile_id;
-		function_data.selected_tile = tile_type;
-//		function_data.line_number = function_data.line[tile_id];
+		function_data.availabl_move_tile.forEach(function(value)
+		{
+			// 選択したタイルの要素番号が、移動可能マスに含まれているかを判定する
+			if(value == tile_id)
+			{
+				// データの格納をする
+				function_data.element_number_of_tile = tile_id;
+				function_data.selected_tile = tile_type;
+			}
+		});
 
 		// 動作確認
 		console.log(`マスの要素番号:${function_data.element_number_of_tile}`);
 		console.log(`マスの得点:${function_data.selected_tile}`);
-//		console.log(`マスの行番号:${function_data.line_number}`);
+
 	}
 }
 
@@ -398,14 +403,6 @@ function search_moveable_squares()
 	// 左側だけ反転させる
 	function_data.left.reverse();
 
-	// 結果の表示
-//	console.log(`右上:${function_data.upper_right}`);
-//	console.log(`左上:${function_data.upper_left}`);
-//	console.log(`右下:${function_data.bottom_right}`);
-//	console.log(`左下:${function_data.bottom_left}`);
-//	console.log(`右:${function_data.right}`);
-//	console.log(`左:${function_data.left}`);
-	
 	// 移動不可範囲を割り出す
 	deadline_detection();
 
@@ -584,13 +581,12 @@ function move_piece_on_array()
 	// 駒の配列上でのマスの要素番号の位置に選択中の駒の値を入れる
 	base_data.piece_position[tile_num] = piece_id;
 
-	// 駒の移動前の位置の値を0に変更する
-	base_data.piece_position[piece_num] = '0';
+	// 駒の移動前の位置の値を5に変更する
+	base_data.piece_position[piece_num] = '5';
+	// 移動後のマスのステータスを変更する
+	change_tile_type(tile_num);
+	
 	console.log(base_data.piece_position);
-
-	// 元居たマスを対象にステータス変更関数を実行する
-	change_tile_type(piece_num);
-	console.log(base_data.tile_data);
 
 }
 
@@ -627,6 +623,15 @@ function move_piece_on_screen()
 //*************
 function move_execute()
 {
+	// 駒が格納されているかを確認する
+	if(function_data.selected_piece != null && function_data.element_number_of_tile != null)
+	{
+		// 配列上の駒の位置を変更する
+		move_piece_on_array();
+		// 画面上の駒の位置を変更する
+		move_piece_on_screen();
+		
+	}
 	
 }
 
@@ -637,39 +642,6 @@ function is_empty(arg_object)
 {
 	return !Object.keys(arg_object).length;
 }
-
-//***************************
-// 指定された座標へ駒を移動させる
-//***************************
-//function move_piece()
-//{
-//	// 移動前の配列番号を取得する
-//	var move_before = function_data.selected_piece;
-//	// 移動後の配列番号を取得する
-//	var move_after = function_data.selected_tile;
-//
-//	// 移動を実施する(仮)
-//	// php側の駒の配置のオフセットにアクセスする
-//	var $piece_offset_data = $('#piece_offset_array');
-//	var piece_offset = JSON.parse($piece_offset_data.attr('piece_offset_data'));
-//
-//	// php側の駒の位置情報にアクセスする
-//	var $piece_position_data = $('#piece_position_array');
-//	// 駒の位置情報を取得する
-//	var piece_position = JSON.parse($piece_position_data.attr('piece_data'));
-//
-//	// 駒へアクセスして要素番号を取り出す
-//	var piece = document.getElementById(`${function_data.selected_piece_id}`);
-//
-//	// 駒の位置情報から座標を取り出す
-//	var position_x = piece_offset[function_data.element_number_of_piece].x;
-//	var position_y = piece_offset[function_data.element_number_of_piece].y;
-//
-//	// 座標を駒に適用する
-//	piece.style.left = position_x;
-//	piece.style.top = position_y;
-//}
-
 
 //*********************************
 // 2点間の線形補完を行う(y座標を求める)

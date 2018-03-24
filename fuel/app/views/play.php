@@ -117,6 +117,11 @@ score_data = '<?= $json_score_data ?>'></script>
 	?>
 </div>
 
+<?php // ボタンの表示　?>
+<div id="decision_button" onclick="move_execute()">
+	<?= Asset::img('button/decision_button.png', array('alt' => 'decision_button')) ?>
+</div>
+
 <script>
 
 //	var a = new Porygon(10,10);	
